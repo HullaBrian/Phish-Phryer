@@ -1,15 +1,29 @@
 import requests
 from bs4 import BeautifulSoup
 
+
+from dotenv import load_dotenv
+import os
+load_dotenv()
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")
+
 URL = "https://projectstem.org/users/sign_in"
 # URL = "https://www.coolmathgames.com/login"
 
-# html = requests.get(URL)
-# with open("test2.html", "w+") as file:
-#    file.writelines(html.text)
+domain = URL[URL.index("//")+2:URL[URL.index("//"):].index(".")+URL.index("//")]
 
-with open("test.html", "r") as file:
+if (domain + ".html") not in os.listdir():
+    print(f"No record of {domain} found.\nRetrieving html...", end="")
+    html = requests.get(URL)
+    with open(f"{domain}.html", "w+") as file:
+        file.writelines(html.text)
+    print("Done!")
+
+print(f"Reading html of {domain}...", end="")
+with open(f"{domain}.html", "r") as file:
     html = file.read()
+print("Done!")
 
 print("Getting website...", end="")
 soup = BeautifulSoup(html, features="html.parser")
@@ -64,10 +78,13 @@ driver.get(URL)
 emailXPATH = XPATHer.extract(emailBoxTag)
 passwordXPATH = XPATHer.extract(passWordBoxTag)
 
+print("Entering data...", end="")
 emailInput = driver.find_element(By.XPATH, emailXPATH)
-emailInput.send_keys("EMAIL")
+emailInput.send_keys(username)
 passwordInput = driver.find_element(By.XPATH, passwordXPATH)
-passwordInput.send_keys("PASSWORD")
+passwordInput.send_keys(password)
+print("Done!\nSubmitting data...", end="")
 passwordInput.submit()
+print("Done!")
 
 time.sleep(20)
