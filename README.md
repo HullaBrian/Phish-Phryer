@@ -2,20 +2,29 @@
 Phish-Phryer is a Python-based application for feeding falsified information to phishing sites.
 
 # Docker Setup
-To set up the docker container, simply run the docker_run.sh script contained in the "docker" directory
+There are two docker containers in this project: one for the cli and another for the webserver running the target phishing site.
+Simply run `docker-compose up` in the main project directory to create the images.
+
+Then run
 ```commandline
-./docker_run.sh
-```
-If you need to modify the starting port, file locations, or container name, simply edit the 'docker.config' file in the docker folder.
-
-The structure of the docker.config file is, by default, as follows:
-```
-website_files=index
-docker_port=8000
-internal_port=80
-container_name=phish-server
+$ docker compose up -d
+[+] Building 0.0s (0/0)
+[+] Running 2/2
+ ✔ Container phish-phryer-cli-1        Started                                                                                                                                                                                 0.5s 
+ ✔ Container phish-phryer-webserver-1  Started 
 ```
 
-To verify if the container is online, go to the address:
-http://127.0.0.1:{docker_port}
-Note, http is used because the internal port used is 80. Other ports may require other methods of accessing.
+Then, the webserver should point to port **8080** on the local machine (and port 80 in the container).
+- Go to http://127.0.0.1:8080 to reach the webserver
+
+## Volumes within the Containers
+Each container has a volume.
+
+```
+phish-phryer-cli-1          ->    phish-phryer/
+phish-phryer-webserver-1    ->    webserver/
+```
+
+Therefore, updating any file in the volume on the local machine will update it within the container. This allows you to update the project in real-time.
+
+# CLI Use
