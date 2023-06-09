@@ -1,0 +1,12 @@
+version: '1'
+services:
+  cli:
+    build: ./
+    volumes:
+      - ./phish-phryer:/phish-phryer/
+  webserver:
+    build: webserver
+    ports:
+      - "8080:80"
+    volumes:
+      - ./webserver:/usr/share/nginx/html/
