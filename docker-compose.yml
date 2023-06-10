@@ -1,12 +1,16 @@
 version: '1'
 services:
   cli:
-    build: ./
     volumes:
-      - ./phish-phryer:/phish-phryer/
+      - ./phish-phryer:/phish-phryer/phryer
+    build: .
+    tty: true
+    stdin_open: true
   webserver:
-    build: webserver
+    image: nginx:mainline-bullseye
     ports:
       - "8080:80"
     volumes:
       - ./webserver:/usr/share/nginx/html/
+    tty: false
+    stdin_open: false
