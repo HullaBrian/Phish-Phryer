@@ -3,7 +3,7 @@ Phish-Phryer is a Python-based application for feeding falsified information to 
 
 # Docker Setup
 There are two docker containers in this project: one for the cli and another for the webserver running the target phishing site.
-Simply run ```$ docker compose up --build```
+Simply run ```$ docker-compose up --detach```
 
 Then, the webserver should point to port **8080** on the local machine (and port 80 in the container).
 - Go to http://127.0.0.1:8080 to reach the webserver
