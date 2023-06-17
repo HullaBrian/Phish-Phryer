@@ -4,6 +4,8 @@ services:
     volumes:
       - ./phish-phryer:/phish-phryer/phryer
     build: .
+    ports:
+      - "9050:9050"
     tty: true
     stdin_open: true
   webserver:

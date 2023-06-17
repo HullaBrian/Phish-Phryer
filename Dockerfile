@@ -8,7 +8,9 @@ RUN apt-get update \
     coreutils \
     git \
     curl \
-    nano
+    nano \
+    tor \
+    htop
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN pip install poetry
 
@@ -22,3 +24,5 @@ COPY ./poetry.lock /phish-phryer/poetry.lock
 COPY ./pyproject.toml /phish-phryer/pyproject.toml
 WORKDIR /phish-phryer
 RUN poetry install --no-interaction --no-ansi --no-root
+
+CMD tor
