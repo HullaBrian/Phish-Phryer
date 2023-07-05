@@ -7,7 +7,7 @@ This software is provided AS IS and has no warranty whatsoever. I am not respons
 # Docker Setup
 There are two docker containers in this project: one for the cli and another for the webserver running the target phishing site.
 Simply run 
-```commandline
+```shell
 docker-compose up --detach
 ```
 
@@ -30,20 +30,12 @@ Therefore, updating any file in the volume on the local machine will update it w
 
 # CLI Use
 In order to use the CLI, enter the container's CLI interface
-```commandline
-(phish-phryer-py3.11) $ docker container list     
-CONTAINER ID   IMAGE                     COMMAND                  CREATED        STATUS         PORTS                  NAMES
-4fd5362c4abf   nginx:mainline-bullseye   "/docker-entrypoint.…"   16 hours ago   Up 3 minutes   0.0.0.0:8080->80/tcp   phish-phryer-webserver-1
-7e992be6c989   phish-phryer-cli          "python3"                16 hours ago   Up 3 minutes                          phish-phryer-cli-1
-(phish-phryer-py3.11) $ docker exec -it 7e992be6c989 bash  
-root@7e992be6c989:/phish-phryer#
+```shell
+docker exec -it phish-phryer_cli_1 bash  
 ```
 
 Then enter the poetry shell (It won't work otherwise)
 
-```commandline
-root@7e992be6c989:/phish-phryer# poetry shell
-Spawning shell within /root/.cache/pypoetry/virtualenvs/phish-phryer-82-V_4Ra-py3.11
-root@7e992be6c989:/phish-phryer# . /root/.cache/pypoetry/virtualenvs/phish-phryer-82-V_4Ra-py3.11/bin/activate
-(phish-phryer-py3.11) root@7e992be6c989:/phish-phryer#
+```shell
+poetry shell
 ```

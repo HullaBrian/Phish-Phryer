@@ -10,14 +10,15 @@ RUN apt-get update \
     curl \
     nano \
     tor \
-    htop
+    htop \
+    firefox-esr
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN pip install poetry
 
 # Copying over project files
-RUN mkdir /phish-phryer
-RUN mkdir /phish-phryer/phryer
-COPY ./phish-phryer /phish-phryer/phryer
+RUN mkdir /phryer-phryer
+RUN mkdir /phryer-phryer/phryer
+COPY phryer /phish-phryer/phryer
 
 # Dependency management
 COPY ./poetry.lock /phish-phryer/poetry.lock

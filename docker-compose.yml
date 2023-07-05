@@ -1,14 +1,16 @@
-version: '1'
+version: '2'
 services:
   cli:
+    container_name: "phryer-cli"
     volumes:
-      - ./phish-phryer:/phish-phryer/phryer
+      - ./phryer:/phish-phryer/phryer
     build: .
     ports:
       - "9050:9050"
     tty: true
     stdin_open: true
   webserver:
+    container_name: "phryer-web"
     image: nginx:mainline-bullseye
     ports:
       - "8080:80"
