@@ -33,7 +33,7 @@ Therefore, updating any file in the volume on the local machine will update it w
 # CLI Use
 In order to use the CLI, enter the container's CLI interface
 ```shell
-docker exec -it phish-phryer_cli_1 bash  
+docker exec -it phryer-cli bash  
 ```
 
 Then enter the poetry shell (It won't work otherwise)
