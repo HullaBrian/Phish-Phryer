@@ -1,3 +1,5 @@
+<img src="https://socialify.git.ci/hullabrian/Phish-Phryer/image?description=1&descriptionEditable=Anyone%20up%20for%20a%20phish%20phry%3F&font=Bitter&language=1&name=1&pattern=Solid&theme=Dark">
+
 # Phish-Phryer
 Phish-Phryer is a Python-based application for feeding falsified information to phishing sites.
 
