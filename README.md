@@ -3,6 +3,8 @@
 # Phish-Phryer
 Phish-Phryer is a Python-based application for feeding falsified information to phishing sites.
 
+**Currently, Phish-Phryer is not in a very useful state, but is currently public to showcase its project structure**
+
 ### Disclaimer
 This software is provided AS IS and has no warranty whatsoever. I am not responsible for any damage done to any entity due to anything pertaining to this project.
 
